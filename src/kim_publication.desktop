@@ -20,7 +20,7 @@
 
 [Desktop Entry]
 Type=Service
-ServiceTypes=KonqPopupMenu/Plugin,image/*
+MimeType=image/png;image/jpg;image/jpeg;image/tiff*
 Actions=Rename;SortByDate;SendByMail;PeleMele;Slideshow;Galery;Album;Watermark;Border;Animation;Multiburst;Adjoin;MPEGRecord;GIFRecord;Apropos;
 X-KDE-Submenu=Kim - Treatment and publication
 X-KDE-Submenu[fr]=Kim - Traitement et publication

@@ -20,7 +20,7 @@
 
 [Desktop Entry]
 Type=Service
-ServiceTypes=KonqPopupMenu/Plugin,image/*
+MimeType=image/png;image/jpg;image/jpeg;image/tiff*
 Actions=AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;JPEG;PNG;GIF;TIF;PDF;TEXT;ConvCustom;GrayScale;Sepia;_SEPARATOR_;Flip;Flop;
 X-KDE-Submenu=Kim - Convert and Rotate
 X-KDE-Submenu[fr]=Kim - Convertir et tourner

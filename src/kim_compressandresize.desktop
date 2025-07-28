@@ -19,7 +19,7 @@
 
 [Desktop Entry]
 Type=Service
-ServiceTypes=KonqPopupMenu/Plugin,image/*
+MimeType=image/png;image/jpg;image/jpeg;image/tiff*
 Actions=Rcprs75;Rcprs80;Rcprs90;RcprsCustom;_SEPARATOR_;Rsize300;Rsize600;Rsize800;Rsize1024;Rsize1280;Rsize1400;Rsize1600;Rsize1920;RsizeCustom;_SEPARATOR_; WebThumb75120;WebExp75640;WebExp75800;WebExp751024;
 X-KDE-Submenu=Kim - Compress and Resize
 X-KDE-Submenu[fr]=Kim - Compresser et redimensionner
