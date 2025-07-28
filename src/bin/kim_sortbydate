@@ -29,7 +29,7 @@ FILE="";
 DIR="$1"
 let "nbfiles = $# - 1"
 
-test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
+test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME
 TMPDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
 title="`gettext "Kim - Rename with EXIF date"`"
 kdialog --title "$title" --yesnocancel "`gettext "Do you want to replace existing files ?"`"

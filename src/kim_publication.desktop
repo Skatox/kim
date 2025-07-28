@@ -25,11 +25,13 @@ Actions=Rename;SortByDate;SendByMail;PeleMele;Slideshow;Galery;Album;Watermark;B
 X-KDE-Submenu=Kim - Treatment and publication
 X-KDE-Submenu[fr]=Kim - Traitement et publication
 X-KDE-Submenu[de]=Kim: Bild-Veröffentlichung
+X-KDE-Submenu[es]=Kim - Tratamiento y publicación
 
 [Desktop Action GIFRecord]
 Name=Record in GIF
 Name[fr]=Enregistrez en GIF
 Name[de]=als GIF-Animation aufnehmen
+Name[es]=Grabar en GIF
 Icon=video-x-generic
 Exec=kim_record gif
 
@@ -37,6 +39,7 @@ Exec=kim_record gif
 Name=Record in MPEG
 Name[fr]=Enregistrez en MPEG
 Name[de]=als MPEG-Video aufnehmen
+Name[es]=Grabar en MPEG
 Icon=video-x-generic
 Exec=kim_record mpg
 
@@ -44,6 +47,7 @@ Exec=kim_record mpg
 Name=Create a Flash slideshow
 Name[fr]=Créer un slideshow en Flash
 Name[de]=Flash-Diashow generieren
+Name[es]=Crear una presentación de diapositivas Flash
 Icon=text-html
 Exec=kim_slideshow %U
 
@@ -51,6 +55,7 @@ Exec=kim_slideshow %U
 Name=Create a html gallery
 Name[fr]=Créer un album en html
 Name[de]=HTML-Bildergalerie erstellen
+Name[es]=Crear una galería HTML
 Icon=text-html
 Exec=kim_galery %U
 
@@ -58,6 +63,7 @@ Exec=kim_galery %U
 Name=Create a photo montage
 Name[fr]=Créer un pèle-mèle
 Name[de]=Foto-Montage erstellen
+Name[es]=Crear un fotomontaje
 Icon=image
 Exec=kim_pelemele %U
 
@@ -65,6 +71,7 @@ Exec=kim_pelemele %U
 Name=Send by mail
 Name[fr]=Envoyer par mail
 Name[de]=Bilder per EMail versenden (mit Größenänderung)
+Name[es]=Enviar por correo
 Icon=internet-mail
 Exec=kim_resizeandsend %U
 
@@ -72,6 +79,7 @@ Exec=kim_resizeandsend %U
 Name=Rename by EXIF date
 Name[fr]=Renommer par date EXIF
 Name[de]=nach Datum sortieren
+Name[es]=Renombrar por fecha EXIF
 Icon=view-sort-descending
 Exec=kim_sortbydate %D %U
 
@@ -79,6 +87,7 @@ Exec=kim_sortbydate %D %U
 Name=Rename images
 Name[fr]=Renommer des images
 Name[de]=Bilder umbenennen
+Name[es]=Renombrar imágenes
 Icon=edit-rename
 Exec=kim_rename %D %U
 
@@ -86,6 +95,7 @@ Exec=kim_rename %D %U
 Name=Create a multi-files Tiff image
 Name[fr]=Créer une image Tiff multi-pages
 Name[de]=mehrere Bilder in einer TIFF-Datei zusammenfassen
+Name[es]=Crear una imagen Tiff de múltiples archivos
 Icon=mail-attachment
 Exec=kim_other adjoin %D %U
 
@@ -93,6 +103,7 @@ Exec=kim_other adjoin %D %U
 Name=Create a gif animation
 Name[fr]=Créer une animation gif
 Name[de]=GIF-Animation erstellen
+Name[es]=Crear una animación gif
 Icon=video-x-generic
 Exec=kim_other animation %D %U
 
@@ -100,6 +111,7 @@ Exec=kim_other animation %D %U
 Name=Multiburst image to gif animation
 Name[fr]=image multiburst vers animation gif
 Name[de]=Standbildfolge (Multiburst) in GIF-Animation umwandeln
+Name[es]=Imagen multiburst a animación gif
 Icon=video-x-generic
 Exec=kim_multiburst %D %U
 
@@ -107,6 +119,7 @@ Exec=kim_multiburst %D %U
 Name=Add a border
 Name[fr]=Ajouter une bordure
 Name[de]=Rahmen hinzufügen
+Name[es]=Añadir un borde
 Icon=image
 Exec=kim_treatment border %D %U
 
@@ -114,6 +127,7 @@ Exec=kim_treatment border %D %U
 Name=Create a pdf album
 Name[fr]=Créer un album en pdf
 Name[de]=PDF-Album erstellen
+Name[es]=Crear un álbum PDF
 Icon=application-pdf
 Exec=kim_album %U
 
@@ -121,6 +135,7 @@ Exec=kim_album %U
 Name=Add text annotation
 Name[fr]=Ajouter une annotation
 Name[de]=Bild-Anmerkung hinzufügen
+Name[es]=Añadir anotación de texto
 Icon=accessories-text-editor
 Exec=kim_treatment mark %D %U
 
@@ -128,6 +143,7 @@ Exec=kim_treatment mark %D %U
 Name=About Kim
 Name[fr]=A propos de Kim
 Name[de]=Über Kim
+Name[es]=Acerca de Kim
 Icon=help-about
 Exec=kim_about about %U
 

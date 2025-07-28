@@ -36,7 +36,7 @@ param8=`gettext "3x4 landscape album"`
 param9=`gettext "4x4 landscape album"`
 nb=`kdialog --title "$title"  --radiolist  "$param1" 1 "$param2" off 2 "$param3"  off 3 "$param4" off 4 "$param5" off 5 "$param6" on 6 "$param7" off 7 "$param8" off 8 "$param9" off`
 
-test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
+test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME
 #KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$USER"/kim.XXXXXXXX` || exit 1
 KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
 text="`gettext "Making album ..."`"

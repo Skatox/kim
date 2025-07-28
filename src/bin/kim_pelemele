@@ -28,7 +28,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 FILE="";
 let "nbfiles = $#"
 
-test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
+test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME
 TMPDIR=`mktemp -d "$KDEHOME"tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
 dtitle="`gettext "Kim pelemele"`"
 dsize=`gettext "Size of small images:"`

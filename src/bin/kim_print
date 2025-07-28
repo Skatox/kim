@@ -24,7 +24,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 . kim_functions
 
 let "nbfiles = $#"
-test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME;
+test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME;
 KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1;
 title="`gettext "Kim - Print"`"
 param1=`gettext "Select album type:"`

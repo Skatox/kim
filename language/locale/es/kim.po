@@ -1,0 +1,413 @@
+# Kim the KDE Image Menu
+# Copyright (C) 2025
+# This file is distributed under the same license as the PACKAGE package.
+# Miguel Useche <contacto@migueluseche.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.9.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-01 20:57+0200\n"
+"PO-Revision-Date: 2025-07-27 20:59:00+0500\n"
+"Last-Translator: Miguel Useche <contacto@migueluseche.com>\n"
+"Language-Team: Miguel Useche <contacto@migueluseche.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/bin/kim_about:29
+msgid "about"
+msgstr "Acerca de"
+
+#: src/bin/kim_about:31
+msgid ""
+"Kim (Kde Image Menu) 0.9.7\\n\\nOriginal Authors : \tCharles Bouveyron "
+"<charles.bouveyron@free.fr>\\n\t\tRaphaël Pinson <raphink@raphink.net>"
+"\\nActual Maintainer\tDaniel Tartavel <contact@librepc.com>"
+msgstr ""
+"Kim (Menú de Imágenes de KDE) 0.9.7\\n\\nAutores Originales: \tCharles Bouveyron "
+"<charles.bouveyron@free.fr>\\n\t\tRaphaël Pinson <raphink@raphink.net>"
+"\\nMantenedor Actual:\tDaniel Tartavel <contact@librepc.com>"
+
+#: src/bin/kim_album:27
+msgid "Kim - PDF Album"
+msgstr "Kim - Álbum PDF"
+
+#: src/bin/kim_album:28 src/bin/kim_print:30
+msgid "Select album type:"
+msgstr "Seleccionar tipo de álbum:"
+
+#: src/bin/kim_album:29
+msgid "1x1 portrait album"
+msgstr "Álbum vertical 1x1"
+
+#: src/bin/kim_album:30
+msgid "1x1 landscape album"
+msgstr "Álbum horizontal 1x1"
+
+#: src/bin/kim_album:31
+msgid "1x2 landscape album"
+msgstr "Álbum horizontal 1x2"
+
+#: src/bin/kim_album:32
+msgid "2x1 portrait album"
+msgstr "Álbum vertical 2x1"
+
+#: src/bin/kim_album:33
+msgid "2x2 landscape album"
+msgstr "Álbum horizontal 2x2"
+
+#: src/bin/kim_album:34 src/bin/kim_print:36
+msgid "3x2 portrait album"
+msgstr "Álbum vertical 3x2"
+
+#: src/bin/kim_album:35
+msgid "3x4 landscape album"
+msgstr "Álbum horizontal 3x4"
+
+#: src/bin/kim_album:36
+msgid "4x4 landscape album"
+msgstr "Álbum horizontal 4x4"
+
+#: src/bin/kim_album:42
+msgid "Making album ..."
+msgstr "Creando álbum ..."
+
+#: src/bin/kim_album:81 src/bin/kim_print:109
+msgid "Unrecognized option !"
+msgstr "¡Opción no reconocida!"
+
+#: src/bin/kim_album:88 src/bin/kim_convmv:54 src/bin/kim_other:63
+#: src/bin/kim_other:72 src/bin/kim_print:56 src/bin/kim_print:63
+#: src/bin/kim_rotatewithexif:50
+msgid "command execution error "
+msgstr "Error de ejecución del comando"
+
+#: src/bin/kim_compress:36
+msgid "Kim - Compression"
+msgstr "Kim - Compresión"
+
+#: src/bin/kim_compress:37 src/bin/kim_convert:35 src/bin/kim_convmv:37
+#: src/bin/kim_flipflop:35 src/bin/kim_galery:45 src/bin/kim_multiburst:39
+#: src/bin/kim_ocr:32 src/bin/kim_pelemele:45 src/bin/kim_print:39
+#: src/bin/kim_treatment:55 src/bin/kim_webexport:40
+msgid "Initializing"
+msgstr "Inicializando"
+
+#: src/bin/kim_compress:38 src/bin/kim_rename:34 src/bin/kim_resize:36
+#: src/bin/kim_sortbydate:35 src/bin/kim_treatment:49 src/bin/kim_webexport:35
+msgid "Do you want to replace existing files ?"
+msgstr "¿Desea reemplazar los archivos existentes?"
+
+#: src/bin/kim_compress:54 src/bin/kim_multiburst:59 src/bin/kim_webexport:54
+msgid "Compressing file :"
+msgstr "Comprimiendo archivo:"
+
+#: src/bin/kim_compress:59
+msgid "compressed"
+msgstr "comprimido"
+
+#: src/bin/kim_convert:34
+msgid "Kim - Convert"
+msgstr "Kim - Convertir"
+
+#: src/bin/kim_convert:49
+msgid "Converting file:"
+msgstr "Convirtiendo archivo:"
+
+#: src/bin/kim_convmv:29 src/bin/kim_print:29
+msgid "Kim - Print"
+msgstr "Kim - Imprimir"
+
+#: src/bin/kim_convmv:30
+msgid "Select original character encoding:"
+msgstr "Seleccionar codificación de caracteres original:"
+
+#: src/bin/kim_convmv:52 src/bin/kim_ocr:33
+msgid "Converting file :"
+msgstr "Convirtiendo archivo:"
+
+#: src/bin/kim_convmv:60
+msgid "Deleting temp files ..."
+msgstr "Eliminando archivos temporales ..."
+
+#: src/bin/kim_flipflop:34
+msgid "Kim - flip flop"
+msgstr "Kim - Voltear"
+
+#: src/bin/kim_flipflop:49
+msgid "Rotating file :"
+msgstr "Rotando archivo:"
+
+#: src/bin/kim_functions:31
+msgid "Destination file exist<br />Enter new name else file will be replaced"
+msgstr "El archivo de destino existe<br />Ingrese un nuevo nombre, de lo contrario, el archivo será reemplazado"
+
+#: src/bin/kim_galery:15
+msgid "Kim HTML Gallery"
+msgstr "Kim - Galería HTML"
+
+#: src/bin/kim_galery:16
+msgid "Title of the Gallery:"
+msgstr "Título de la galería:"
+
+#: src/bin/kim_galery:17 src/bin/kim_slideshow:12
+msgid "My title ..."
+msgstr "Mi título ..."
+
+#: src/bin/kim_galery:18 src/bin/kim_slideshow:14
+msgid "Author:"
+msgstr "Autor:"
+
+#: src/bin/kim_galery:32
+msgid "Number of columns:"
+msgstr "Número de columnas:"
+
+#: src/bin/kim_galery:71 src/bin/kim_treatment:69
+msgid "Treatment of file:"
+msgstr "Procesamiento de archivo:"
+
+#: src/bin/kim_multiburst:36
+msgid "Kim multiburst to GIF"
+msgstr "Kim - Multirráfaga a GIF"
+
+#: src/bin/kim_multiburst:66
+msgid "Converting ..."
+msgstr "Convirtiendo ..."
+
+#: src/bin/kim_multiburst:70
+msgid "Removing temporary files"
+msgstr "Eliminando archivos temporales"
+
+#: src/bin/kim_ocr:31
+msgid "Kim Convert to text"
+msgstr "Kim - Convertir a texto"
+
+#: src/bin/kim_ocr:53
+msgid "Character recognition"
+msgstr "Reconocimiento de caracteres"
+
+#: src/bin/kim_other:33 src/bin/kim_rename:35 src/bin/kim_resize:35
+#: src/bin/kim_resizeandsend:43 src/bin/kim_slideshow:22
+#: src/bin/kim_sortbydate:44
+msgid "Initialising"
+msgstr "Inicializando"
+
+#: src/bin/kim_other:36
+msgid "Kim - Images to GIF animation"
+msgstr "Kim - Imágenes a animación GIF"
+
+#: src/bin/kim_other:48
+msgid "Adding image:"
+msgstr "Añadiendo imagen:"
+
+#: src/bin/kim_other:57
+msgid "Delay between images in 1/100 second"
+msgstr "Retraso entre imágenes en 1/100 de segundo"
+
+#: src/bin/kim_other:58
+msgid "Name of the GIF animation image"
+msgstr "Nombre de la imagen de animación GIF"
+
+#: src/bin/kim_other:61
+msgid "Creating GIF animation"
+msgstr "Creando animación GIF"
+
+#: src/bin/kim_other:67
+msgid "Name of the Tiff image"
+msgstr "Nombre de la imagen TIFF"
+
+#: src/bin/kim_other:70
+msgid "Creating multipages TIFF"
+msgstr "Creando TIFF de múltiples páginas"
+
+#: src/bin/kim_pelemele:33
+msgid "Kim pelemele"
+msgstr "Kim - Mosaico"
+
+#: src/bin/kim_pelemele:34
+msgid "Size of small images:"
+msgstr "Tamaño de las imágenes pequeñas:"
+
+#: src/bin/kim_pelemele:36
+msgid "Number of rows and columns:"
+msgstr "Número de filas y columnas:"
+
+#: src/bin/kim_pelemele:38
+msgid "Overlaping ratio in percent:"
+msgstr "Proporción de superposición en porcentaje:"
+
+#: src/bin/kim_pelemele:40
+msgid "Background color:"
+msgstr "Color de fondo:"
+
+#: src/bin/kim_pelemele:65 src/bin/kim_print:54
+msgid "resizing of file :"
+msgstr "Redimensionando archivo:"
+
+#: src/bin/kim_pelemele:80
+msgid "Making pelemele"
+msgstr "Creando mosaico"
+
+#: src/bin/kim_print:31
+msgid "9x13 cm: 2x2 images, landscape"
+msgstr "9x13 cm: 2x2 imágenes, horizontal"
+
+#: src/bin/kim_print:32
+msgid "10x15 cm: 1x2 images, portrait"
+msgstr "10x15 cm: 1x2 imágenes, vertical"
+
+#: src/bin/kim_print:33
+msgid "11.5x15 cm: 1x2 images, portrait"
+msgstr "11.5x15 cm: 1x2 imágenes, vertical"
+
+#: src/bin/kim_print:34
+msgid "13x18 cm: 1x2 images, portrait"
+msgstr "13x18 cm: 1x2 imágenes, vertical"
+
+#: src/bin/kim_print:35
+msgid "20x25 cm: 1 image, landscape"
+msgstr "20x25 cm: 1 imagen, horizontal"
+
+#: src/bin/kim_print:37
+msgid "Thumbnails: 4x5 images, portrait"
+msgstr "Miniaturas: 4x5 imágenes, vertical"
+
+#: src/bin/kim_print:67 src/bin/kim_print:73 src/bin/kim_print:79
+#: src/bin/kim_print:85 src/bin/kim_print:91 src/bin/kim_print:97
+#: src/bin/kim_print:103
+msgid "Creating album ..."
+msgstr "Creando álbum ..."
+
+#: src/bin/kim_print:112
+msgid "Deleting miniatures ..."
+msgstr "Eliminando miniaturas ..."
+
+#: src/bin/kim_record:36
+msgid "Choose duration of animation (sec):"
+msgstr "Elegir duración de la animación (segundos):"
+
+#: src/bin/kim_record:39
+msgid "Click 'Ok' and then choose the window target !"
+msgstr "¡Haga clic en 'Aceptar' y luego elija la ventana de destino!"
+
+#: src/bin/kim_record:65
+msgid "The animation is created !"
+msgstr "¡La animación ha sido creada!"
+
+#: src/bin/kim_rename:33
+msgid "Kim - rename"
+msgstr "Kim - Renombrar"
+
+#: src/bin/kim_rename:36
+msgid "Choose the new name of images:"
+msgstr "Elegir el nuevo nombre de las imágenes:"
+
+#: src/bin/kim_rename:37
+msgid "wallpaper_"
+msgstr "fondo_"
+
+#: src/bin/kim_rename:70
+msgid "Renaming file:"
+msgstr "Renombrando archivo:"
+
+#: src/bin/kim_resize:51
+msgid "Kim - Resizing file: "
+msgstr "Kim - Redimensionando archivo:"
+
+#: src/bin/kim_resizeandsend:34
+msgid "Kim - Resize and send"
+msgstr "Kim - Redimensionar y enviar"
+
+#: src/bin/kim_resizeandsend:35
+msgid "Send by mail:"
+msgstr "Enviar por correo:"
+
+#: src/bin/kim_resizeandsend:36
+msgid "Full size"
+msgstr "Tamaño completo"
+
+#: src/bin/kim_resizeandsend:37
+msgid "1600 px width"
+msgstr "Ancho de 1600 px"
+
+#: src/bin/kim_resizeandsend:38
+msgid "1280 px width"
+msgstr "Ancho de 1280 px"
+
+#: src/bin/kim_resizeandsend:39
+msgid "1024 px width"
+msgstr "Ancho de 1024 px"
+
+#: src/bin/kim_resizeandsend:58
+msgid "Resizing and compressing file:"
+msgstr "Redimensionando y comprimiendo archivo:"
+
+#: src/bin/kim_rotate:33
+msgid "Kim - rotate"
+msgstr "Kim - Rotar"
+
+#: src/bin/kim_rotate:47 src/bin/kim_rotatewithexif:48
+msgid "Rotating file: "
+msgstr "Rotando archivo:"
+
+#: src/bin/kim_rotatewithexif:34
+msgid "kim - Rotate with EXIF"
+msgstr "Kim - Rotar con EXIF"
+
+#: src/bin/kim_slideshow:8
+msgid "Kim - Slideshow"
+msgstr "Kim - Presentación de diapositivas"
+
+#: src/bin/kim_slideshow:11
+msgid "Title:"
+msgstr "Título:"
+
+#: src/bin/kim_slideshow:17
+msgid "Size:"
+msgstr "Tamaño:"
+
+#: src/bin/kim_slideshow:56
+msgid "Treatment of file: "
+msgstr "Procesamiento de archivo:"
+
+#: src/bin/kim_sortbydate:34
+msgid "Kim - Rename with EXIF date"
+msgstr "Kim - Renombrar con fecha EXIF"
+
+#: src/bin/kim_sortbydate:58
+msgid "Renaming file: "
+msgstr "Renombrando archivo:"
+
+#: src/bin/kim_sortbydate:83
+msgid "Do not find a date in EXIF, so can't rename"
+msgstr "No se encontró una fecha en EXIF, por lo que no se puede renombrar"
+
+#: src/bin/kim_treatment:34
+msgid "Kim treatment"
+msgstr "Kim - Tratamiento"
+
+#: src/bin/kim_treatment:35
+msgid "Choose your annotation:"
+msgstr "Elegir su anotación:"
+
+#: src/bin/kim_treatment:36
+msgid "My annotation"
+msgstr "Mi anotación"
+
+#: src/bin/kim_treatment:37
+msgid "Select border color:"
+msgstr "Seleccionar color del borde:"
+
+#: src/bin/kim_treatment:38
+msgid "white"
+msgstr "blanco"
+
+#: src/bin/kim_treatment:39
+msgid "black"
+msgstr "negro"
+
+#: src/bin/kim_webexport:34
+msgid "Kim Web export"
+msgstr "Kim - Exportar a web"

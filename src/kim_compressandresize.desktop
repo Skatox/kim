@@ -24,11 +24,13 @@ Actions=Rcprs75;Rcprs80;Rcprs90;RcprsCustom;_SEPARATOR_;Rsize300;Rsize600;Rsize8
 X-KDE-Submenu=Kim - Compress and Resize
 X-KDE-Submenu[fr]=Kim - Compresser et redimensionner
 X-KDE-Submenu[de]=Kim: Bildabmessungen und Dateigröße ändern
+X-KDE-Submenu[es]=Kim - Comprimir y redimensionar
 
 [Desktop Action Rcprs75]
 Name=Compress at 75 %
 Name[fr]=Compresser à 75 %
 Name[de]=Bildqualität auf 75% setzen
+Name[es]=Comprimir al 75 %
 Icon=application-x-compressed-tar
 Exec=kim_compress 75 %D %U
 
@@ -36,6 +38,7 @@ Exec=kim_compress 75 %D %U
 Name=Compress at 80 %
 Name[fr]=Compresser à 80 %
 Name[de]=Bildqualität auf 80% setzen
+Name[es]=Comprimir al 80 %
 Icon=application-x-compressed-tar
 Exec=kim_compress 80 %D %U
 
@@ -43,6 +46,7 @@ Exec=kim_compress 80 %D %U
 Name=Compress at 90 %
 Name[fr]=Compresser à 90 %
 Name[de]=Bildqualität auf 90% setzen
+Name[es]=Comprimir al 90 %
 Icon=application-x-compressed-tar
 Exec=kim_compress 90 %D %U
 
@@ -50,6 +54,7 @@ Exec=kim_compress 90 %D %U
 Name=Compress Custom...
 Name[fr]=Compression personnalisée
 Name[de]=Bildqualität individuell festlegen
+Name[es]=Comprimir personalizado...
 Icon=application-x-compressed-tar
 Exec=kim_compress `kdialog --inputbox "Compression rate:" 60` %D %U
 
@@ -58,6 +63,7 @@ Exec=kim_compress `kdialog --inputbox "Compression rate:" 60` %D %U
 Name=Resize (300x225 pixels)
 Name[fr]=Redimensionner (300x225 pixels)
 Name[de]=Bildabmessungen ändern: 300x225 Pixel
+Name[es]=Redimensionar (300x225 píxeles)
 Icon=transform-crop-and-resize
 Exec=kim_resize 300x300 %D %U
 
@@ -65,6 +71,7 @@ Exec=kim_resize 300x300 %D %U
 Name=Resize (600x450 pixels)
 Name[fr]=Redimensionner (600x450 pixels)
 Name[de]=Bildabmessungen ändern: 600x450 Pixel
+Name[es]=Redimensionar (600x450 píxeles)
 Icon=transform-crop-and-resize
 Exec=kim_resize 600x600 %D %U
 
@@ -72,6 +79,7 @@ Exec=kim_resize 600x600 %D %U
 Name=Resize (800x600 pixels)
 Name[fr]=Redimensionner (800x600 pixels)
 Name[de]=Bildabmessungen ändern: 800x600 Pixel
+Name[es]=Redimensionar (800x600 píxeles)
 Icon=transform-crop-and-resize
 Exec=kim_resize 800x800 %D %U
 
@@ -79,6 +87,7 @@ Exec=kim_resize 800x800 %D %U
 Name=Resize (1024x768 pixels)
 Name[fr]=Redimensionner (1024x768 pixels)
 Name[de]=Bildabmessungen ändern: 1024x768 Pixel
+Name[es]=Redimensionar (1024x768 píxeles)
 Icon=transform-crop-and-resize
 Exec=kim_resize 1024x1024 %D %U
 
@@ -86,6 +95,7 @@ Exec=kim_resize 1024x1024 %D %U
 Name=Resize (1280x900 pixels)
 Name[fr]=Redimensionner (1280x900 pixels)
 Name[de]=Bildabmessungen ändern: 1200x900 Pixel
+Name[es]=Redimensionar (1280x900 píxeles)
 Icon=transform-crop-and-resize
 Exec=kim_resize 1280x1280 %D %U
 
@@ -93,6 +103,7 @@ Exec=kim_resize 1280x1280 %D %U
 Name=Resize (1400x1050 pixels)
 Name[fr]=Redimensionner (1400x1050 pixels)
 Name[de]=Bildabmessungen ändern: 1400x1050 Pixel
+Name[es]=Redimensionar (1400x1050 píxeles)
 Icon=transform-crop-and-resize
 Exec=kim_resize 1400x1400 %D %U
 
@@ -100,6 +111,7 @@ Exec=kim_resize 1400x1400 %D %U
 Name=Resize (1600x1200 pixels)
 Name[fr]=Redimensionner (1600x1200 pixels)
 Name[de]=Bildabmessungen ändern: 1600x1200 Pixel
+Name[es]=Redimensionar (1600x1200 píxeles)
 Icon=transform-scale
 Exec=kim_resize 1600x1200 %D %U
 
@@ -107,6 +119,7 @@ Exec=kim_resize 1600x1200 %D %U
 Name=Resize (1920x1200 pixels)
 Name[fr]=Redimensionner (1920x1200 pixels)
 Name[de]=Bildabmessungen ändern: 1920x1200 Pixel
+Name[es]=Redimensionar (1920x1200 píxeles)
 Icon=transform-scale
 Exec=kim_resize 1920x1200 %D %U
 
@@ -114,6 +127,7 @@ Exec=kim_resize 1920x1200 %D %U
 Name=Resize Custom...
 Name[fr]=Redimensionnement personnalisé
 Name[de]=Bildabmessungen individuell ändern...
+Name[es]=Redimensionar personalizado...
 Icon=transform-crop-and-resize
 Exec=kim_resize `kdialog --inputbox "Resize dimension (max width x max height):" 300x300` %D %U
 
@@ -121,6 +135,7 @@ Exec=kim_resize `kdialog --inputbox "Resize dimension (max width x max height):"
 Name=WebThumbnail: 120x90 at 75 %
 Name[fr]=Mininature web : 120x90 à 75 %
 Name[de]=Thumbnail für Internetseiten: 120x90 bei 75%
+Name[es]=Miniatura web: 120x90 al 75 %
 Icon=application-x-mswrite
 Exec=kim_webexport 120x90 %D %U
 
@@ -128,6 +143,7 @@ Exec=kim_webexport 120x90 %D %U
 Name=WebExport: 600x450 at 75 %
 Name[fr]=Pour le web : 600x450 à 75 %
 Name[de]=für Internetseiten: 600x450 bei 75%
+Name[es]=Exportar para web: 600x450 al 75 %
 Icon=text-html
 Exec=kim_webexport 600x600 %D %U
 
@@ -135,11 +151,13 @@ Exec=kim_webexport 600x600 %D %U
 Name=WebExport: 800x600 at 75 %
 Name[fr]=Pour le web : 800x600 à 75 %
 Name[de]=für Internetseiten: 800x600 bei 75%
+Name[es]=Exportar para web: 800x600 al 75 %
 Icon=text-html
 Exec=kim_webexport 800x800 %D %U
 
 [Desktop Action WebExp751024]
 Name=WebExport: 1024x768 at 75 %
 Name[fr]=Pour le web : 1024x768 à 75 %
+Name[es]=Exportar para web: 1024x768 al 75 %
 Icon=text-html
 Exec=kim_webexport 1024x1024 %D %U

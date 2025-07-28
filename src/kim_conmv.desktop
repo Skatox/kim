@@ -26,5 +26,6 @@ X-KDE-Priority=TopLevel
 
 [Desktop Action convmv]
 Name=Convert character encoding
+Name[es]=Convertir codificación de caracteres
 Icon=utilities-file-archiver
 Exec=kim_convmv "%U"
