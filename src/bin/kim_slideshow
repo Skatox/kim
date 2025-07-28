@@ -6,7 +6,7 @@
 FILE="";
 let "nbfiles = $#"
 title="`gettext "Kim - Slideshow"`"
-kdeinstdir=`kde4-config --prefix`
+kdeinstdir=`qtpaths --install-prefix`
 KIM_DIR=$kdeinstdir/share/apps/kim/slideshow
 dtitle=`gettext "Title:"`
 gtitle=`gettext "My title ..."`

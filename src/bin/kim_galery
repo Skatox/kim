@@ -10,7 +10,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 
 FILE="";
 let "nbfiles = $#"
-kdeinstdir=`kde4-config --prefix`
+kdeinstdir=`qtpaths --install-prefix`
 KIM_DIR=$kdeinstdir/share/apps/kim/galery
 dtitle=`gettext "Kim HTML Gallery"`
 gtitle=`gettext "Title of the Gallery:"`

@@ -17,12 +17,12 @@
 # along with Foobar; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-kdeinstdir=`kde4-config --prefix`
+kdeinstdir=`qtpaths --install-prefix`
 
-rm $kdeinstdir/share/apps/konqueror/servicemenus/kim_*.desktop
+rm $kdeinstdir/share/kio/servicemenus/kim_*.desktop
 rm $kdeinstdir/bin/kim_*
 
-cd $kdeinstdir/share/apps/konqueror/servicemenus/
+cd $kdeinstdir/share/kio/servicemenus/
 mv imageconverter.desktop~ imageconverter.desktop
 mv jpegorient.desktop~ jpegorient.desktop
 

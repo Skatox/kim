@@ -17,12 +17,12 @@
 # along with Foobar; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-kdeinstdir=`kde4-config --prefix`
+kdeinstdir=`qtpaths --install-prefix`
 
-cp src/kim*.desktop $kdeinstdir/share/kde4/services/
+cp src/kim*.desktop $kdeinstdir/share/kio/servicemenus
 cp src/bin/kim* $kdeinstdir/bin/
 chmod a+rx $kdeinstdir/bin/kim*
-chmod a+r $kdeinstdir/share/kde4/services/kim*.desktop
+chmod a+r $kdeinstdir/share/kio/servicemenus/kim*.desktop
 
 mkdir $kdeinstdir/share/apps/kim
 cp language/kim.pot $kdeinstdir/share/apps/kim/
