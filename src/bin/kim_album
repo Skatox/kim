@@ -1,0 +1,97 @@
+#!/bin/bash
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# Added localisation and dbus support in 2013 by Daniel Tartavel <contact@librepc.com>
+
+export TEXTDOMAIN="kim"
+export TEXTDOMAINDIR="/usr/share/locale"
+. gettext.sh
+. kim_functions
+
+dir=`dirname $1`
+title=`gettext "Kim - PDF Album"`
+param1=`gettext "Select album type:"`
+param2=`gettext "1x1 portrait album"`
+param3=`gettext "1x1 landscape album"`
+param4=`gettext "1x2 landscape album"`
+param5=`gettext "2x1 portrait album"`
+param6=`gettext "2x2 landscape album"`
+param7=`gettext "3x2 portrait album"`
+param8=`gettext "3x4 landscape album"`
+param9=`gettext "4x4 landscape album"`
+nb=`kdialog --title "$title"  --radiolist  "$param1" 1 "$param2" off 2 "$param3"  off 3 "$param4" off 4 "$param5" off 5 "$param6" on 6 "$param7" off 7 "$param8" off 8 "$param9" off`
+
+test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
+#KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$USER"/kim.XXXXXXXX` || exit 1
+KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
+text="`gettext "Making album ..."`"
+dbusRef=`kdialog --title "$title" --progressbar "$text"  "2"`
+if [ -z "$nb" ]; then
+	qdbus $dbusRef close
+	exit 1
+fi
+case "$nb" in
+	1)	tile="1x1"
+		geometry="800x600+5+5"
+		page="595x842";;
+		
+	2)	tile="1x1"
+		geometry="800x600+5+5"
+		page="842x595";;
+		
+	3)	tile="1x2"
+		geometry="640x480+5+5"
+		page="842x595";;
+
+	4)	tile="1x2"
+		geometry="640x480+5+5"
+		page="595x842";;
+
+	5)	tile="2x2"
+		geometry="640x480+5+5"
+		page="842x595";;
+		
+	6)	tile="2x3"
+		geometry="640x480+5+5"
+		page="595x842";;
+
+	7)	tile="4x3"
+		geometry="640x480+5+5"
+		page="842x595";;
+		
+	8)	tile="4x4"
+		geometry="640x480+5+5"
+		page="842x595";;	
+
+	*) kdialog --title "$title" --msgbox "`gettext "Unrecognized option !"`";;
+esac
+qdbus $dbusRef value 1
+savefile=`kdialog --title "$title" --getsavefilename "$dir" "*.pdf"`
+if [ -n "$savefile" ] ; then
+	montage -page "$page" -tile "$tile" "$@" -auto-orient -geometry "$geometry" -density "300x300" -quality 95 -shadow  "$savefile"
+	if [ $? -ne 0 ];then
+		error "`gettext "command execution error "`" 'montage -page '$page' -tile '$tile' '$@' -auto-orient -geometry '$geometry' -density 300x300 -quality 95 -shadow  '$savefile
+	fi
+fi
+
+qdbus $dbusRef value 2
+qdbus $dbusRef close
+
+
+
+

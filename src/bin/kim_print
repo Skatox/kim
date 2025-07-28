@@ -1,0 +1,120 @@
+#!/bin/bash
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# Added localisation and dbus support in 2013 by Daniel Tartavel <contact@librepc.com>
+
+export TEXTDOMAIN="kim"
+export TEXTDOMAINDIR="/usr/share/locale"
+. gettext.sh
+. kim_functions
+
+let "nbfiles = $#"
+test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME;
+KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1;
+title="`gettext "Kim - Print"`"
+param1=`gettext "Select album type:"`
+param2=`gettext "9x13 cm: 2x2 images, landscape"`
+param3=`gettext "10x15 cm: 1x2 images, portrait"`
+param4=`gettext "11.5x15 cm: 1x2 images, portrait"`
+param5=`gettext "13x18 cm: 1x2 images, portrait"`
+param6=`gettext "20x25 cm: 1 image, landscape"`
+param7=`gettext "3x2 portrait album"`
+param8=`gettext "Thumbnails: 4x5 images, portrait"`
+nb=`kdialog --title "$title" --radiolist "$param1" 1 "$param2"  off 2 "$param3"  off 3 "$param4"  on 4 "$param5"  off 5 "$param6" off 6 "$param7" off 7 "$param8" off`
+init=`gettext "Initializing"`
+dbusRef=`kdialog --title "$title" --progressbar "$init" $nbfiles`
+qdbus $dbusRef showCancelButton true
+compteur=0
+
+case "$nb" in
+1)	for i in "$@";do
+		if [ -f "$i" ];then
+			if test "true" = `qdbus $dbusRef wasCancelled`;then
+				qdbus $dbusRef close
+				rm -rf "$KIMDIR"
+				exit 1
+			fi
+			let "compteur +=1"
+			FILE=`basename "$i"`;
+			qdbus $dbusRef setLabelText "`gettext "resizing of file :"`$FILE"
+ 			convert -resize 640x480 -rotate '90<' $i "$KIMDIR/mini_$FILE";
+ 			error $? "`gettext "command execution error "`" "convert -resize 640x480 -rotate 90< $i $TMPDIR/mini_$FILE"
+ 		
+			qdbus $dbusRef value "$compteur"
+		fi;
+	done
+	
+	montage -page 842x595 -tile 2x2 -geometry 255x368+5+5 "$KIMDIR/mini_*" `kdialog --title "$title" --getsavefilename "`dirname $1`" *.pdf`;
+	error $? "`gettext "command execution error "`" "montage -tile 2x2 -geometry 600x800+5+5 -page 595x842 $KIMDIR/mini_* "
+	rm -rf "$KIMDIR"
+	;;
+	
+2)	qdbus $dbusRef setLabelText "`gettext "Creating album ..."`"
+	montage -page 595x842 -tile 1x1 -geometry 283x425+5+5 "$@" "$KIMDIR"/miniature.jpg
+	qdbus $dbusRef value $(( nbfiles / 2 ))
+	montage -page 595x842 -tile 1x1 -geometry 283x425+5+5 "$KIMDIR"/miniature*.jpg* `kdialog --title "$title" --getsavefilename "$dir" *.pdf`
+	;;
+
+3)	qdbus $dbusRef setLabelText "`gettext "Creating album ..."`"
+	montage -page 595x842 -tile 1x2 -geometry 326x425+5+5 "$@" "$KIMDIR"/miniature.jpg
+	qdbus $dbusRef value $(( nbfiles / 2))
+	montage -page 595x842 -tile 1x1 -geometry 326x425+5+5 "$KIMDIR"/miniature*.jpg* `kdialog --title "$title" --getsavefilename "$dir" *.pdf`
+	;;
+
+4)	qdbus $dbusRef setLabelText "`gettext "Creating album ..."`"
+	montage -page 595x842 -tile 1x2 -geometry 368x510+5+5 "$@" "$KIMDIR"/miniature.jpg
+	qdbus $dbusRef value $(( nbfiles / 2))
+	montage -page 595x842 -tile 1x1 -geometry 368x510+5+5 "$KIMDIR"/miniature*.jpg* `kdialog --title "$title" --getsavefilename "$dir" *.pdf`
+	;;
+	
+5)	qdbus $dbusRef setLabelText "`gettext "Creating album ..."`"
+	montage -page 842x595 -tile 2x2 -geometry 566x708+5+5 "$@" "$KIMDIR"/miniature.jpg
+	qdbus $dbusRef value $(( nbfiles / 2))
+	montage -page 842x595 -tile 1x1 -geometry 566x708+5+5 "$KIMDIR"/miniature*.jpg* `kdialog --title "$title" --getsavefilename "$dir" *.pdf`
+	;;
+	
+6)	qdbus $dbusRef setLabelText "`gettext "Creating album ..."`"
+	montage -page 595x842 -tile 3x2 -geometry 640x480+5+5 "$@" "$KIMDIR"/miniature.jpg 
+	qdbus $dbusRef value $(( nbfiles / 2))
+	montage -page 595x842 -tile 1x1 -geometry 480x640+5+5 "$KIMDIR"/miniature*.jpg* `kdialog --title "$title" --getsavefilename "$dir" *.pdf`
+	;;
+
+7)	qdbus $dbusRef setLabelText "`gettext "Creating album ..."`"
+	montage -page 595x842 -tile 4x3 -geometry 640x480+5+5 "$@" "$KIMDIR"/miniature.jpg 
+	qdbus $dbusRef value $(( nbfiles / 2))
+	montage -page 595x842 -tile 1x1 -geometry 640x480+5+5 "$KIMDIR"/miniature*.jpg* `kdialog --title "$title" --getsavefilename "$dir" *.pdf`
+	;;
+	
+8)	qdbus $dbusRef setLabelText "`gettext "Creating album ..."`"
+	montage -page 595x842 -tile 4x4 -geometry 640x480+5+5 "$@" "$KIMDIR"/miniature.jpg 
+	qdbus $dbusRef value $(( nbfiles / 2))
+	montage -page 595x842 -tile 1x1 -geometry 640x480+5+5 "$KIMDIR"/miniature*.jpg* `kdialog --title "$title" --getsavefilename "$dir" *.pdf`
+	;;
+
+*) kdialog --title "$title" --msgbox "`gettext "Unrecognized option !"`";;
+esac
+
+qdbus $dbusRef setLabelText "`gettext "Deleting miniatures ..."`"
+qdbus $dbusRef value $nbfiles
+#rm "$KIMDIR"/miniature*.jpg*
+rm -Rf "$KIMDIR"
+qdbus $dbusRef close
+
+
+
+

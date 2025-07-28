@@ -1,0 +1,90 @@
+#!/bin/sh
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# Copyright (C) 2013 Daniel Tartavel <contact@librepc.com>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, 
+# MA  02110-1301, USA
+#
+# Author : 	Charles Bouveyron <charles.bouveyron@free.fr>
+#
+# Added localisation and dbus support in 2013 by Daniel Tartavel <contact@librepc.com>
+export TEXTDOMAIN="kim"
+export TEXTDOMAINDIR="/usr/share/locale"
+. gettext.sh
+
+FILE="";
+let "nbfiles = $#"
+
+test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
+TMPDIR=`mktemp -d "$KDEHOME"tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
+dtitle="`gettext "Kim pelemele"`"
+dsize=`gettext "Size of small images:"`
+SIZE=`kdialog --title "$dtitle" --inputbox "$dsize 400x400"`;
+dtile=`gettext "Number of rows and columns:"`
+TILE=`kdialog --title "$dtitle" --inputbox "$dtile 5x4"`;
+dratio=`gettext "Overlaping ratio in percent:"`
+RATIO=`kdialog --title "$dtitle" --inputbox "$dratio 15"`;
+dcolor=`gettext "Background color:"`
+COLOR=`kdialog --title "$dtitle" --inputbox "$dcolor grey"`;
+W=`echo $SIZE | sed 's/[^0-9]/ /g' | awk '{print $1}'`;
+let "OVER = ($RATIO*$W)/100";
+let "BORDER = (2*$W)/100";
+init=`gettext "Initializing"`
+dbusRef=`kdialog --title "$title" --progressbar "$init" "$nbfiles"`
+
+qdbus $dbusRef showCancelButton true
+compteur=0
+
+for i in "$@";do
+	if [ -f "$i" ];then 
+		#test if cancel button has been pushed
+		if test "true" = `qdbus $dbusRef wasCancelled`;then
+			qdbus $dbusRef close
+			rm -rf "$KDEHOME"/tmp-"$HOSTNAME"/kim.*
+			exit 1
+		fi
+		let "compteur +=1"
+		FILE=`basename "$i"`;
+		RANDOM=`perl -e 'print int(rand(1000000))'`;
+		while [ -e "$TMPDIR/pelemele_$RANDOM.png" ]; do 
+			RANDOM=`perl -e 'print int(rand(1000000))'`;
+		done
+		qdbus $dbusRef setLabelText "`gettext "resizing of file :"`$FILE"
+		convert -resize $SIZE "$i" "$TMPDIR/$FILE"
+		convert "$TMPDIR/$FILE" \
+			-bordercolor white  -border $BORDER \
+			-bordercolor grey60 -border 1 \
+			-background  none   -rotate `perl -e 'print rand() * 30 - 15'` \
+			-background  black  \( +clone -shadow 60x4+4+4 \) +swap \
+			-background  none   -flatten \
+			-depth 8  -quality 95 "$TMPDIR/pelemele_$RANDOM.png"
+		#	-depth 8  -quality 95 "$TMPDIR/pelemele_$FILE.png"
+		
+ 		qdbus $dbusRef value "$compteur"
+		fi;
+done
+
+qdbus $dbusRef setLabelText "`gettext "Making pelemele"`"
+montage -background $COLOR -tile $TILE -geometry -$OVER-$OVER $TMPDIR/pelemele_*.png `kdialog --title "$dtitle" --getsavefilename "~ *.png"`;
+qdbus $dbusRef close;
+#rm -rf "$KDEHOME"/tmp-"$HOSTNAME"/kim.*;
+
+
+
+
+
+
+

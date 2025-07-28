@@ -1,0 +1,74 @@
+#!/bin/bash
+#
+# A small script to convert Sony Cybershot multiburst images into an animated GIF. The script requires the 
+# imagemagick command line tools to be installed.
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# Author : Charles Bouveyron <charles.bouveyron@free.fr>
+#	Mathieu Vilaplana <mathieu@creationgif.com>
+#	Raphaël Pinson <raphink@raphink.net>
+#
+# Added localisation and dbus support in 2013 by Daniel Tartavel <contact@librepc.com>
+
+export TEXTDOMAIN="kim"
+export TEXTDOMAINDIR="/usr/share/locale"
+. gettext.sh
+
+DIR="$1"
+test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
+#KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$USER"/kim.XXXXXXXX` || exit 1
+KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
+title="`gettext "Kim multiburst to GIF"`"
+let "nbfiles = $# -1"
+iterations=$nbfiles*16
+init=`gettext "Initializing"`
+dbusRef=`kdialog --title "$title" --progressbar "$init" $iterations`
+
+qdbus $dbusRef showCancelButton true
+
+compteur=0
+
+# Extract all 16 subpictures
+for ((i=1;i<=4;i++))
+do
+	for ((j=1;j<=4;j++))
+	do
+		#test if cancel button has been pushed
+		if test "true" = `qdbus $dbusRef wasCancelled`;then
+			qdbus $dbusRef close
+			exit 1
+		fi
+		let "compteur +=1"
+		x=$((($j-1)*320));
+		y=$((($i-1)*240));
+		qdbus $dbusRef setLabelText "`gettext "Compressing file :"` `basename "$FILE"`"
+		convert -crop 320x240+$x+$y "$2" "$KIMDIR/imagette.$i.$j.jpg"
+ 		qdbus $dbusRef value "$compteur"
+	done
+done
+
+# Convert in gif animation
+qdbus $dbusRef setLabelText "`gettext "Converting ..."`"
+convert -adjoin -delay 5 "$KIMDIR/imagette.*.jpg" "$DIR/animation.gif"
+
+# Remove subpictures (?!)
+qdbus $dbusRef setLabelText "`gettext "Removing temporary files"`"
+rm -rf "$KIMDIR"
+
+qdbus $dbusRef close
+

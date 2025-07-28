@@ -1,0 +1,8 @@
+Kim (Kde Image Menu)
+
+Original Authors : 	Charles Bouveyron <charles.bouveyron@free.fr>
+			Raphaël Pinson <raphink@raphink.net>
+Actual developer :	Daniel Tartavel <contact@librepc.com>
+
+Translators :		Susan Voitel (German)
+			Daniel Tartavel <contact@librepc.com> (french)

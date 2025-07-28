@@ -1,0 +1,75 @@
+#!/bin/bash
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, U
+#
+# Author : 	Charles Bouveyron <charles.bouveyron@free.fr>
+#		Alessandro Faggiano <>
+#		Mathieu Vilaplana <mathieu@creationgif.com>
+#		Raphaël Pinson <raphink@raphink.net>
+#
+# Added localisation and dbus support in 2013 by Daniel Tartavel <contact@librepc.com>
+
+export TEXTDOMAIN="kim"
+export TEXTDOMAINDIR="/usr/share/locale"
+. gettext.sh
+
+test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
+TMPDIR=`mktemp -d "$KDEHOME"tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
+
+ATTACHMENTS="";
+title=`gettext "Kim - Resize and send"`
+param1=`gettext "Send by mail:"`
+param2=`gettext "Full size"`
+param3=`gettext "1600 px width"`
+param4=`gettext "1280 px width"`
+param5=`gettext "1024 px width"`
+choice=`kdialog --title "$title" --radiolist "$param1" 1 "$param2"  off 2 "$param3"  on 3 "$param4" off 4 "$param5"  off`;
+
+let "nbfiles = $#"
+init=`gettext "Initialising"`
+dbusRef=`kdialog --title "$title" --progressbar "$init" $nbfiles`
+qdbus $dbusRef showCancelButton true 
+
+compteur=0
+
+for i in "$@";do
+	if [ -f "$i" ];then
+		#test if cancel button has been pushed
+		if test "true" = `qdbus $dbusRef wasCancelled`;then
+			qdbus $dbusRef close
+			exit 1
+		fi
+		ATTACHMENTS="$i"
+		let "compteur +=1"
+		qdbus $dbusRef setLabelText "`gettext "Resizing and compressing file:"` `basename "$ATTACHMENTS"`"
+		case "$choice" in 
+			1) cp $i $TMPDIR;;
+			2) convert -resize 1600x1600 "$ATTACHMENTS" "$TMPDIR"/`basename "$ATTACHMENTS"`;;
+			3) convert -resize 1280x1280 "$ATTACHMENTS" "$TMPDIR"/`basename "$ATTACHMENTS"`;;
+			4) convert -resize 1024x1024 "$ATTACHMENTS" "$TMPDIR"/`basename "$ATTACHMENTS"`;;
+			*)exit 1;;
+		esac
+		qdbus $dbusRef value $compteur
+	fi;
+done
+#thunderbird -compose "attachment='$TMPDIR/*'"
+kmail --attach $TMPDIR/* & job_pid=$!
+wait $job_pid
+#rm -rf "$TMPDIR"
+
+qdbus $dbusRef close
+#kdialog --title "$title" --msgbox "`gettext "Send by mail: you can write your message!"`"

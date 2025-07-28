@@ -1,0 +1,133 @@
+# Servicemenu image converter
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, U
+#
+# Deutsche Übersetzung: Susan Voitel, 2013
+
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin,image/*
+Actions=Rename;SortByDate;SendByMail;PeleMele;Slideshow;Galery;Album;Watermark;Border;Animation;Multiburst;Adjoin;MPEGRecord;GIFRecord;Apropos;
+X-KDE-Submenu=Kim - Treatment and publication
+X-KDE-Submenu[fr]=Kim - Traitement et publication
+X-KDE-Submenu[de]=Kim: Bild-Veröffentlichung
+
+[Desktop Action GIFRecord]
+Name=Record in GIF
+Name[fr]=Enregistrez en GIF
+Name[de]=als GIF-Animation aufnehmen
+Icon=video-x-generic
+Exec=kim_record gif
+
+[Desktop Action MPEGRecord]
+Name=Record in MPEG
+Name[fr]=Enregistrez en MPEG
+Name[de]=als MPEG-Video aufnehmen
+Icon=video-x-generic
+Exec=kim_record mpg
+
+[Desktop Action Slideshow]
+Name=Create a Flash slideshow
+Name[fr]=Créer un slideshow en Flash
+Name[de]=Flash-Diashow generieren
+Icon=text-html
+Exec=kim_slideshow %U
+
+[Desktop Action Galery]
+Name=Create a html gallery
+Name[fr]=Créer un album en html
+Name[de]=HTML-Bildergalerie erstellen
+Icon=text-html
+Exec=kim_galery %U
+
+[Desktop Action PeleMele]
+Name=Create a photo montage
+Name[fr]=Créer un pèle-mèle
+Name[de]=Foto-Montage erstellen
+Icon=image
+Exec=kim_pelemele %U
+
+[Desktop Action SendByMail]
+Name=Send by mail
+Name[fr]=Envoyer par mail
+Name[de]=Bilder per EMail versenden (mit Größenänderung)
+Icon=internet-mail
+Exec=kim_resizeandsend %U
+
+[Desktop Action SortByDate]
+Name=Rename by EXIF date
+Name[fr]=Renommer par date EXIF
+Name[de]=nach Datum sortieren
+Icon=view-sort-descending
+Exec=kim_sortbydate %D %U
+
+[Desktop Action Rename]
+Name=Rename images
+Name[fr]=Renommer des images
+Name[de]=Bilder umbenennen
+Icon=edit-rename
+Exec=kim_rename %D %U
+
+[Desktop Action Adjoin]
+Name=Create a multi-files Tiff image
+Name[fr]=Créer une image Tiff multi-pages
+Name[de]=mehrere Bilder in einer TIFF-Datei zusammenfassen
+Icon=mail-attachment
+Exec=kim_other adjoin %D %U
+
+[Desktop Action Animation]
+Name=Create a gif animation
+Name[fr]=Créer une animation gif
+Name[de]=GIF-Animation erstellen
+Icon=video-x-generic
+Exec=kim_other animation %D %U
+
+[Desktop Action Multiburst]
+Name=Multiburst image to gif animation
+Name[fr]=image multiburst vers animation gif
+Name[de]=Standbildfolge (Multiburst) in GIF-Animation umwandeln
+Icon=video-x-generic
+Exec=kim_multiburst %D %U
+
+[Desktop Action Border]
+Name=Add a border
+Name[fr]=Ajouter une bordure
+Name[de]=Rahmen hinzufügen
+Icon=image
+Exec=kim_treatment border %D %U
+
+[Desktop Action Album]
+Name=Create a pdf album
+Name[fr]=Créer un album en pdf
+Name[de]=PDF-Album erstellen
+Icon=application-pdf
+Exec=kim_album %U
+
+[Desktop Action Watermark]
+Name=Add text annotation
+Name[fr]=Ajouter une annotation
+Name[de]=Bild-Anmerkung hinzufügen
+Icon=accessories-text-editor
+Exec=kim_treatment mark %D %U
+
+[Desktop Action Apropos]
+Name=About Kim
+Name[fr]=A propos de Kim
+Name[de]=Über Kim
+Icon=help-about
+Exec=kim_about about %U
+

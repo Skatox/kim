@@ -1,0 +1,114 @@
+#!/bin/bash
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, U
+#
+# Author : 	Charles Bouveyron <charles.bouveyron@free.fr>
+#		Alessandro Faggiano <>
+#		Mathieu Vilaplana <mathieu@creationgif.com>
+#		Raphaël Pinson <raphink@raphink.net>
+#
+# Added localisation and dbus support in 2013 by Daniel Tartavel <contact@librepc.com>
+
+export TEXTDOMAIN="kim"
+export TEXTDOMAINDIR="/usr/share/locale"
+. gettext.sh
+
+ATTACHMENTS="";
+SCELTA="$1";
+DIR="$2";
+let "nbfiles = ($# -1)/2"
+title=`gettext "Kim treatment"`
+choose=`gettext "Choose your annotation:"`
+annotation=`gettext "My annotation"`
+border=`gettext "Select border color:"`
+border_color=`gettext "white"`
+color=`gettext "black"`
+case $SCELTA in 
+		mark) annotation=`kdialog --title "$title" --inputbox "$choose" "$annotation"`;;
+		border) color=`kdialog --title "$title" --radiolist "$border" "1" "$border_color" "on" "2" "$color" "off"`;;
+		gray) ;;
+		sepia) ;;
+		*)
+		  kdialog --title "$dtitle" --passivepopup "Operation cancelled : no command (mark or border)" 5
+		  exit 1;;
+esac
+param1=`gettext "Do you want to replace existing files ?"`
+kdialog --title "$title" --yesnocancel "$param1"
+ret=$?
+if [ $ret = 2 ]; then
+	exit 1
+fi
+init=`gettext "Initializing"`
+# Replace existing files !
+dbusRef=`kdialog --title "$title" --progressbar "$init" "$nbfiles"`
+qdbus $dbusRef showCancelButton true 
+compteur=0
+for i in "$@";do
+	if [ -f "$i" ];then
+		#test if cancel button has been pushed
+		if test "true" = `qdbus $dbusRef wasCancelled`;then
+			qdbus $dbusRef close
+			exit 1
+		fi
+		ATTACHMENTS="$i"
+		let "compteur +=1"
+		label="`gettext "Treatment of file:"` `basename "$ATTACHMENTS"`"
+		qdbus $dbusRef setLabelText "$label"
+		case "$SCELTA" in 
+			gray)
+				if [ $ret = 0 ]; then
+					mogrify -colorspace gray "$ATTACHMENTS"
+				else
+					convert -colorspace gray "$ATTACHMENTS" "$DIR/gray_`basename "$ATTACHMENTS"`"
+				fi
+			;;
+			sepia)
+				if [ $ret = 0 ]; then
+					mogrify -sepia-tone 80% "$ATTACHMENTS"
+				else
+					convert -sepia-tone 80% "$ATTACHMENTS" "$DIR/sepia_`basename "$ATTACHMENTS"`"
+				fi
+			;;
+			border)
+				if [ $ret = 0 ]; then
+					case "$color" in
+					1) mogrify -border 10x10 -bordercolor white "$ATTACHMENTS";;
+					2) mogrify -border 10x10 -bordercolor black "$ATTACHMENTS";;
+					esac
+				else
+					case "$color" in
+					1) convert -border 10x10 -bordercolor white "$ATTACHMENTS" "$DIR/border_`basename "$ATTACHMENTS"`";;
+					2) convert -border 10x10 -bordercolor black "$ATTACHMENTS" "$DIR/border_`basename "$ATTACHMENTS"`";;
+					esac
+				fi
+			;;
+			mark)
+				if [ $ret = 0 ]; then
+					mogrify -font URW-Chancery-Medium-Italic -pointsize 40 -draw "gravity southeast  text 0,0 '$annotation'" -fill white -stroke black -draw "gravity southeast  text 0,0 '$annotation'" "$ATTACHMENTS"
+				else
+					convert -font URW-Chancery-Medium-Italic -pointsize 40 -draw "gravity southeast  text 0,0 '$annotation'" -fill white -stroke black -draw "gravity southeast  text 0,0 '$annotation'" "$ATTACHMENTS" "$DIR"/text_`basename "$ATTACHMENTS"`
+				fi
+			;;
+			*)
+				kdialog --title "$dtitle" --passivepopup "Operation cancelled : no command (mark or border)" 5
+				exit 1
+			;;
+		esac
+		qdbus $dbusRef value "$compteur"
+	fi;
+done
+qdbus $dbusRef close

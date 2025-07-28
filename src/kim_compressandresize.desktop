@@ -1,0 +1,145 @@
+# Servicemenu image converter
+#
+# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, U
+# Deutsche Übersetzung: Susan Voitel 2013-04-27
+
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin,image/*
+Actions=Rcprs75;Rcprs80;Rcprs90;RcprsCustom;_SEPARATOR_;Rsize300;Rsize600;Rsize800;Rsize1024;Rsize1280;Rsize1400;Rsize1600;Rsize1920;RsizeCustom;_SEPARATOR_; WebThumb75120;WebExp75640;WebExp75800;WebExp751024;
+X-KDE-Submenu=Kim - Compress and Resize
+X-KDE-Submenu[fr]=Kim - Compresser et redimensionner
+X-KDE-Submenu[de]=Kim: Bildabmessungen und Dateigröße ändern
+
+[Desktop Action Rcprs75]
+Name=Compress at 75 %
+Name[fr]=Compresser à 75 %
+Name[de]=Bildqualität auf 75% setzen
+Icon=application-x-compressed-tar
+Exec=kim_compress 75 %D %U
+
+[Desktop Action Rcprs80]
+Name=Compress at 80 %
+Name[fr]=Compresser à 80 %
+Name[de]=Bildqualität auf 80% setzen
+Icon=application-x-compressed-tar
+Exec=kim_compress 80 %D %U
+
+[Desktop Action Rcprs90]
+Name=Compress at 90 %
+Name[fr]=Compresser à 90 %
+Name[de]=Bildqualität auf 90% setzen
+Icon=application-x-compressed-tar
+Exec=kim_compress 90 %D %U
+
+[Desktop Action RcprsCustom]
+Name=Compress Custom...
+Name[fr]=Compression personnalisée
+Name[de]=Bildqualität individuell festlegen
+Icon=application-x-compressed-tar
+Exec=kim_compress `kdialog --inputbox "Compression rate:" 60` %D %U
+
+
+[Desktop Action Rsize300]
+Name=Resize (300x225 pixels)
+Name[fr]=Redimensionner (300x225 pixels)
+Name[de]=Bildabmessungen ändern: 300x225 Pixel
+Icon=transform-crop-and-resize
+Exec=kim_resize 300x300 %D %U
+
+[Desktop Action Rsize600]
+Name=Resize (600x450 pixels)
+Name[fr]=Redimensionner (600x450 pixels)
+Name[de]=Bildabmessungen ändern: 600x450 Pixel
+Icon=transform-crop-and-resize
+Exec=kim_resize 600x600 %D %U
+
+[Desktop Action Rsize800]
+Name=Resize (800x600 pixels)
+Name[fr]=Redimensionner (800x600 pixels)
+Name[de]=Bildabmessungen ändern: 800x600 Pixel
+Icon=transform-crop-and-resize
+Exec=kim_resize 800x800 %D %U
+
+[Desktop Action Rsize1024]
+Name=Resize (1024x768 pixels)
+Name[fr]=Redimensionner (1024x768 pixels)
+Name[de]=Bildabmessungen ändern: 1024x768 Pixel
+Icon=transform-crop-and-resize
+Exec=kim_resize 1024x1024 %D %U
+
+[Desktop Action Rsize1280]
+Name=Resize (1280x900 pixels)
+Name[fr]=Redimensionner (1280x900 pixels)
+Name[de]=Bildabmessungen ändern: 1200x900 Pixel
+Icon=transform-crop-and-resize
+Exec=kim_resize 1280x1280 %D %U
+
+[Desktop Action Rsize1400]
+Name=Resize (1400x1050 pixels)
+Name[fr]=Redimensionner (1400x1050 pixels)
+Name[de]=Bildabmessungen ändern: 1400x1050 Pixel
+Icon=transform-crop-and-resize
+Exec=kim_resize 1400x1400 %D %U
+
+[Desktop Action Rsize1600]
+Name=Resize (1600x1200 pixels)
+Name[fr]=Redimensionner (1600x1200 pixels)
+Name[de]=Bildabmessungen ändern: 1600x1200 Pixel
+Icon=transform-scale
+Exec=kim_resize 1600x1200 %D %U
+
+[Desktop Action Rsize1920]
+Name=Resize (1920x1200 pixels)
+Name[fr]=Redimensionner (1920x1200 pixels)
+Name[de]=Bildabmessungen ändern: 1920x1200 Pixel
+Icon=transform-scale
+Exec=kim_resize 1920x1200 %D %U
+
+[Desktop Action RsizeCustom]
+Name=Resize Custom...
+Name[fr]=Redimensionnement personnalisé
+Name[de]=Bildabmessungen individuell ändern...
+Icon=transform-crop-and-resize
+Exec=kim_resize `kdialog --inputbox "Resize dimension (max width x max height):" 300x300` %D %U
+
+[Desktop Action WebThumb75120]
+Name=WebThumbnail: 120x90 at 75 %
+Name[fr]=Mininature web : 120x90 à 75 %
+Name[de]=Thumbnail für Internetseiten: 120x90 bei 75%
+Icon=application-x-mswrite
+Exec=kim_webexport 120x90 %D %U
+
+[Desktop Action WebExp75640]
+Name=WebExport: 600x450 at 75 %
+Name[fr]=Pour le web : 600x450 à 75 %
+Name[de]=für Internetseiten: 600x450 bei 75%
+Icon=text-html
+Exec=kim_webexport 600x600 %D %U
+
+[Desktop Action WebExp75800]
+Name=WebExport: 800x600 at 75 %
+Name[fr]=Pour le web : 800x600 à 75 %
+Name[de]=für Internetseiten: 800x600 bei 75%
+Icon=text-html
+Exec=kim_webexport 800x800 %D %U
+
+[Desktop Action WebExp751024]
+Name=WebExport: 1024x768 at 75 %
+Name[fr]=Pour le web : 1024x768 à 75 %
+Icon=text-html
+Exec=kim_webexport 1024x1024 %D %U
