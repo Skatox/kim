@@ -1,7 +1,7 @@
 HOW TO INSTALL
 =======================
 
-To install KIM on your computer, run 
+To install KIM6 on your computer, run 
 
 ./install.sh
 
@@ -11,7 +11,7 @@ as root and select the option for installation.
 HOW TO UNINSTALL
 ======================
 
-To uninstall KIM from your computer, run
+To uninstall KIM6 from your computer, run
 
 ./uninstall.sh
 

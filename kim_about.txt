@@ -1,8 +1,9 @@
-Kim (Kde Image Menu)
+Kim6 (Kde Image Menu for Plasma 6)
 
 Original Authors : 	Charles Bouveyron <charles.bouveyron@free.fr>
 			Raphaël Pinson <raphink@raphink.net>
-Actual developer :	Daniel Tartavel <contact@librepc.com>
+Previous developer :	Daniel Tartavel <contact@librepc.com>
+Current developer :  Miguel Useche <contacto@migueluseche.com>
 
 Translators :		Susan Voitel (German)
 			Daniel Tartavel <contact@librepc.com> (french)
