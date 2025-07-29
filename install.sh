@@ -24,19 +24,19 @@ cp src/bin/kim* $kdeinstdir/bin/
 chmod a+rx $kdeinstdir/bin/kim*
 chmod a+r $kdeinstdir/share/kio/servicemenus/kim*.desktop
 
-mkdir $kdeinstdir/share/apps/kim
+mkdir -p $kdeinstdir/share/apps/kim
 cp language/kim.pot $kdeinstdir/share/apps/kim/
-cp -Rf language/locale/* /usr/share/locale/
+cp -Rf language/locale/* $kdeinstdir/share/locale/
 
 cp -Rf src/slideshow $kdeinstdir/share/apps/kim/
-cp src/galery $kdeinstdir/share/apps/kim/
+cp -Rf src/gallery $kdeinstdir/share/apps/kim/
 
-mkdir /usr/share/doc/kim
-cp AUTHORS /usr/share/doc/kim/
-cp INSTALL /usr/share/doc/kim/
-cp COPYING /usr/share/doc/kim/
-cp ChangeLog /usr/share/doc/kim/
-cp README /usr/share/doc/kim/
+mkdir -p $kdeinstdir/share/doc/kim
+cp AUTHORS $kdeinstdir/share/doc/kim/
+cp INSTALL $kdeinstdir/share/doc/kim/
+cp COPYING $kdeinstdir/share/doc/kim/
+cp ChangeLog $kdeinstdir/share/doc/kim/
+cp README.md $kdeinstdir/share/doc/kim/
 
 
 echo "KIM6 has been installed. Good bye."
