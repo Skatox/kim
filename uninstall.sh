@@ -17,7 +17,7 @@
 # along with Foobar; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-kdeinstdir=`qmake -query QT_INSTALL_PREFIX`
+kdeinstdir=`qmake6 -query QT_INSTALL_PREFIX`
 
 rm $kdeinstdir/share/kio/servicemenus/kim_*.desktop
 rm $kdeinstdir/bin/kim_*
@@ -28,6 +28,10 @@ mv jpegorient.desktop~ jpegorient.desktop
 
 rm -Rf $kdeinstdir/share/apps/kim
 rm -Rf /usr/share/doc/kim
+
+rm -Rf $kdeinstdir/share/locale/de/kim.po
+rm -Rf $kdeinstdir/share/locale/es/kim.po
+rm -Rf $kdeinstdir/share/locale/fr/kim.po
 
 find /usr/share/locale/ -iname kim.mo -exec rm {} ";"
 

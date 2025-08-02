@@ -6,7 +6,7 @@
 FILE="";
 let "nbfiles = $#"
 title="`gettext "Kim - Slideshow"`"
-kdeinstdir=`qmake -query QT_INSTALL_PREFIX`
+kdeinstdir=`qmake6 -query QT_INSTALL_PREFIX`
 KIM_DIR=$kdeinstdir/share/apps/kim/slideshow
 dtitle=`gettext "Title:"`
 gtitle=`gettext "My title ..."`

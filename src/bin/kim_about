@@ -25,7 +25,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 . gettext.sh
 
 ACTION="$1";
-kdeinstdir=`qmake -query QT_INSTALL_PREFIX`
+kdeinstdir=`qmake6 -query QT_INSTALL_PREFIX`
 about=`gettext "about"`
 case $ACTION in 
 	about) kdialog --title "$about" --msgbox "`gettext "Kim (Kde Image Menu) 0.9.7\n\nOriginal Authors : 	Charles Bouveyron <charles.bouveyron@free.fr>\n		Raphaël Pinson <raphink@raphink.net>\nActual Maintainer	Daniel Tartavel <contact@librepc.com>"`" 600 400;;
