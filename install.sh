@@ -17,7 +17,7 @@
 # along with Foobar; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-kdeinstdir=`qtpaths --install-prefix`
+kdeinstdir=`qmake -query QT_INSTALL_PREFIX`
 
 cp src/kim*.desktop $kdeinstdir/share/kio/servicemenus
 cp src/bin/kim* $kdeinstdir/bin/
