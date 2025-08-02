@@ -10,7 +10,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 
 FILE="";
 let "nbfiles = $#"
-kdeinstdir=`qmake -query QT_INSTALL_PREFIX`
+kdeinstdir=`qmake6 -query QT_INSTALL_PREFIX`
 KIM_DIR=$kdeinstdir/share/apps/kim/galery
 dtitle=`gettext "Kim HTML Gallery"`
 gtitle=`gettext "Title of the Gallery:"`
