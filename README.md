@@ -2,7 +2,10 @@
 
 This is a community-maintained fork of the original KIM (KDE Image Manipulator) script, updated to ensure compatibility and optimal performance under **KDE Plasma 6**.
 
-KIM is a powerful collection of scripts designed to enhance image management and manipulation directly within the KDE Plasma desktop environment. It provides quick access to common image operations through Konqueror/Dolphin service menus.
+KIM is a powerful collection of scripts designed to enhance image management and manipulation directly within the KDE Plasma desktop environment. It provides quick access to everyday image operations through Konqueror/Dolphin service menus.
+
+![Screenshot_20250802_233311](https://github.com/user-attachments/assets/b724c458-5f4a-449c-8ba2-85ae9d08bc7e)
+
 
 ## Features
 
@@ -50,7 +53,7 @@ This project is licensed under the **GNU General Public License (GPL)**.
 
 ## Current Maintainer
 
-Miguel Useche
+Miguel Useche | [Donate him a coffe with Paypal](https://www.paypal.com/paypalme/skatox/15)
 
 ## Original Credits
 
