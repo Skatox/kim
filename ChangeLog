@@ -1,5 +1,8 @@
-Release kim6-0.9.10
+Release kim6-0.9.11
 - Added support for HEIC files for the convert script.
+
+Release kim6-0.9.10
+- Solve installation bugs.
 
 Release kim6-0.9.9
 - Updated code to work on Plasma 6.
