@@ -1,6 +1,7 @@
 # Servicemenu image converter
 #
-# Copyright (C) 2005,2006  Charles Bouveyron <charles.bouveyron@free.fr>
+# Copyright (C) 2005,2025  Charles Bouveyron <charles.bouveyron@free.fr>
+# Modified by: Miguel Useche <contacto@migueluseche.com>
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,7 +21,7 @@
 
 [Desktop Entry]
 Type=Service
-MimeType=image/png;image/jpg;image/jpeg;image/tiff*
+MimeType=image/png;image/jpg;image/jpeg;image/tiff*;image/heic;
 Actions=AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;JPEG;PNG;GIF;TIF;PDF;TEXT;ConvCustom;GrayScale;Sepia;_SEPARATOR_;Flip;Flop;
 X-KDE-Submenu=Kim - Convert and Rotate
 X-KDE-Submenu[fr]=Kim - Convertir et tourner
