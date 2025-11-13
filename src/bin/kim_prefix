@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ -n "$KIM_PREFIX" ]; then
+    echo "$KIM_PREFIX"
+    exit 0
+fi
+
+if [ -n "$KDE_INSTALL_PREFIX" ]; then
+    echo "$KDE_INSTALL_PREFIX"
+    exit 0
+fi
+
+if command -v qmake6 >/dev/null 2>&1; then
+    qmake6 -query QT_INSTALL_PREFIX 2>/dev/null && exit 0
+fi
+
+if command -v qtpaths6 >/dev/null 2>&1; then
+    datadir=$(qtpaths6 --paths GenericDataLocation 2>/dev/null | head -n1)
+    [ -n "$datadir" ] && echo "${datadir%/share}" && exit 0
+fi
+
+if command -v qtpaths >/dev/null 2>&1; then
+    datadir=$(qtpaths --paths GenericDataLocation 2>/dev/null | head -n1)
+    [ -n "$datadir" ] && echo "${datadir%/share}" && exit 0
+fi
+
+echo "/usr"
+exit 0
