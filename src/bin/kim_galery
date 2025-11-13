@@ -69,8 +69,8 @@ for i in "$@";do
 		FILE="$i";
 		IMAGE=`basename "$FILE"`;
 		qdbus $dbusRef setLabelText "`gettext "Treatment of file:"` $IMAGE"
-		convert -resize $SCALE_1 "$FILE" $DIR/images/"$IMAGE";
-		convert -resize $SCALE_2 "$FILE" $DIR/thumbs/"$IMAGE";
+		convert -resize $SCALE_1 -- "$FILE" $DIR/images/"$IMAGE";
+		convert -resize $SCALE_2 -- "$FILE" $DIR/thumbs/"$IMAGE";
 		W2=`identify -format "%w" $DIR/images/"$IMAGE"`;
 		H2=`identify -format "%h" $DIR/images/"$IMAGE"`;
 		echo '<td align='center'>' >> $DIR/index.html;
