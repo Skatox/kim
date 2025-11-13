@@ -41,7 +41,7 @@ To uninstall, run the `uninstall.sh` script as root:
 sudo ./uninstall.sh
 ```
 
-Alternatively, check your favorite package manager for a KIM package.
+Alternatively, check your favorite package manager for a KIM package. << Kim for KDE 6.x does not exist in any package manager.
 
 ## Usage
 
@@ -53,7 +53,7 @@ This project is licensed under the **GNU General Public License (GPL)**.
 
 ## Current Maintainer
 
-Miguel Useche | [Donate him a coffe with Paypal](https://www.paypal.com/paypalme/skatox/15)
+Miguel Useche | [Donate by giving him a coffee with Paypal](https://www.paypal.com/paypalme/skatox/15)
 
 ## Original Credits
 
