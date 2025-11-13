@@ -25,7 +25,8 @@ export TEXTDOMAINDIR="/usr/share/locale"
 
 let "nbfiles = $#"
 test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME;
-KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1;
+KIMDIR=$(mktemp -d "${TMPDIR:-/tmp}"/kim.XXXXXXXX) || exit 1
+
 title="`gettext "Kim - Print"`"
 param1=`gettext "Select original character encoding:"`
 
@@ -58,5 +59,5 @@ for i in "$@";do
 done
 
 qdbus $dbusRef setLabelText "`gettext "Deleting temp files ..."`"
-rm -Rf "$KIMDIR"
+[ -z "$KIM_DEBUG_KEEP_TMP" ] && rm -rf "$KIMDIR"
 qdbus $dbusRef close
