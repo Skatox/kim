@@ -20,14 +20,19 @@
 #		Raphaël Pinson <raphink@raphink.net>
 #
 # Added localisation and dbus support in 2013 by Daniel Tartavel <contact@librepc.com>
+
+kdeinstdir=$(kim_prefix)
 export TEXTDOMAIN="kim"
-export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAINDIR="$kdeinstdir/share/locale"
 . gettext.sh
 
-ACTION="$1";
-kdeinstdir=`qmake6 -query QT_INSTALL_PREFIX`
-about=`gettext "about"`
-case $ACTION in 
-	about) kdialog --title "$about" --msgbox "`gettext "Kim (Kde Image Menu) 0.9.7\n\nOriginal Authors : 	Charles Bouveyron <charles.bouveyron@free.fr>\n		Raphaël Pinson <raphink@raphink.net>\nActual Maintainer	Daniel Tartavel <contact@librepc.com>"`" 600 400;;
+ACTION="$1"
+about=$(gettext "about")
+
+case "$ACTION" in
+    about)
+		kdialog --title "$about" --msgbox "`gettext "Kim (Kde Image Menu) 0.9.7\n\nOriginal Authors : 	Charles Bouveyron <charles.bouveyron@free.fr>\n		Raphaël Pinson <raphink@raphink.net>\nActual Maintainer	Daniel Tartavel <contact@librepc.com>"`" 600 400;;
+        kdialog --title "$about" --msgbox "$(gettext "Kim (Kde Image Menu)…")" 600 400
+        ;;
 esac
 
