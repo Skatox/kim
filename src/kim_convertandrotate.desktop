@@ -21,8 +21,10 @@
 
 [Desktop Entry]
 Type=Service
-MimeType=image/png;image/jpg;image/jpeg;image/tiff*;image/heic;
-Actions=AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;JPEG;PNG;GIF;TIF;PDF;TEXT;ConvCustom;GrayScale;Sepia;_SEPARATOR_;Flip;Flop;
+MimeType=image/png;image/jpg;image/jpeg;image/tiff;image/tiff*;image/heic;image/webp;image/avif;
+# Or All image types replacing the new line with this:
+# MimeType=image/*;
+Actions=AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;JPEG;PNG;GIF;BMP;TIF;PDF;WEBP;AVIF;TEXT;ConvCustom;GrayScale;Sepia;_SEPARATOR_;Flip;Flop;
 X-KDE-Submenu=Kim - Convert and Rotate
 X-KDE-Submenu[fr]=Kim - Convertir et tourner
 X-KDE-Submenu[de]=Kim: Bilder drehen und umwandeln
@@ -75,6 +77,23 @@ Name[de]=Bild in ein PDF umwandeln
 Name[es]=Convertir a PDF
 Icon=image
 Exec=kim_convert pdf %U
+
+[Desktop Action WEBP]
+Name=Convert to WebP
+Name[fr]=Convertir en WebP
+Name[de]=ins WebP-Format umwandeln
+Name[es]=Convertir a WebP
+Icon=image
+Exec=kim_convert webp %U
+
+[Desktop Action AVIF]
+Name=Convert to AVIF
+Name[fr]=Convertir en AVIF
+Name[de]=ins AVIF-Format umwandeln
+Name[es]=Convertir a AVIF
+Icon=image
+Exec=kim_convert avif %U
+
 
 [Desktop Action ConvCustom]
 Name=Convert custom ...
