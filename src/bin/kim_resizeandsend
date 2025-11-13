@@ -28,7 +28,8 @@ export TEXTDOMAINDIR="/usr/share/locale"
 . gettext.sh
 
 test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME
-TMPDIR=`mktemp -d "$KDEHOME"tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
+# Standard tmp dir, not relying on KDEHOME
+TMPDIR=$(mktemp -d "${TMPDIR:-/tmp}"/kim.XXXXXXXX) || exit 1
 
 ATTACHMENTS="";
 title=`gettext "Kim - Resize and send"`
@@ -69,7 +70,9 @@ done
 #thunderbird -compose "attachment='$TMPDIR/*'"
 kmail --attach $TMPDIR/* & job_pid=$!
 wait $job_pid
-#rm -rf "$TMPDIR"
+# New tmp dir cleanup
+[ -z "$KIM_DEBUG_KEEP_TMP" ] && rm -rf "$TMPDIR"
+
 
 qdbus $dbusRef close
 #kdialog --title "$title" --msgbox "`gettext "Send by mail: you can write your message!"`"
