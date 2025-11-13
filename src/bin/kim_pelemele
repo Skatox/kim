@@ -29,7 +29,8 @@ FILE="";
 let "nbfiles = $#"
 
 test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME
-TMPDIR=`mktemp -d "$KDEHOME"tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
+KIMDIR=$(mktemp -d "${TMPDIR:-/tmp}"/kim.XXXXXXXX) || exit 1
+
 dtitle="`gettext "Kim pelemele"`"
 dsize=`gettext "Size of small images:"`
 SIZE=`kdialog --title "$dtitle" --inputbox "$dsize 400x400"`;
@@ -53,7 +54,7 @@ for i in "$@";do
 		#test if cancel button has been pushed
 		if test "true" = `qdbus $dbusRef wasCancelled`;then
 			qdbus $dbusRef close
-			rm -rf "$KDEHOME"/tmp-"$HOSTNAME"/kim.*
+			rm -rf "$KIMDIR"
 			exit 1
 		fi
 		let "compteur +=1"
@@ -80,8 +81,8 @@ done
 qdbus $dbusRef setLabelText "`gettext "Making pelemele"`"
 montage -background $COLOR -tile $TILE -geometry -$OVER-$OVER $TMPDIR/pelemele_*.png `kdialog --title "$dtitle" --getsavefilename "~ *.png"`;
 qdbus $dbusRef close;
-#rm -rf "$KDEHOME"/tmp-"$HOSTNAME"/kim.*;
 
+[ -z "$KIM_DEBUG_KEEP_TMP" ] && rm -rf "$KIMDIR"
 
 
 
