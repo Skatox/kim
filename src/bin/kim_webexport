@@ -55,9 +55,9 @@ for i in "$@";do
 		qdbus $dbusRef setLabelText "$label"
 		case $ret in
 			0)
-				mogrify -resize "$SCELTA" -quality 75 "$FILE";;
+				mogrify -resize "$SCELTA" -quality 75 -- "$FILE";;
 			1)
-				convert -resize "$SCELTA" -quality 75 "$FILE" "$DIR/web_`basename "$FILE"`";;
+				convert -resize "$SCELTA" -quality 75 -- "$FILE" "$DIR/web_`basename "$FILE"`";;
 		esac;
 		qdbus $dbusRef value "$compteur"
 	fi;
