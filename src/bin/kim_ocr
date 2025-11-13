@@ -49,11 +49,15 @@ for i in "$@";do
 		#echo $TMPFILE
 		convert $FILE -normalize "$TMPFILE.pgm"
 		unpaper  "$TMPFILE.pgm" "$TMPDIR/unpaper.pgm"
-		convert "$TMPDIR/unpaper.pgm" "$TMPFILE.tiff"
-		qdbus  $dbusRef setLabelText `gettext "Character recognition"`
-		tesseract "$TMPFILE.tiff" ${FILE%%.*} -l fra
- 		qdbus  $dbusRef value $compteur
- 		qdbus  $dbusRef showCancelButton true 		
+		convert "$FILE" -compress Group4 -depth 1 "$TMPFILE.tiff"
+		# Determine OCR language intelligently
+		ocr_lang=${KIM_OCR_LANG:-${LANG%%_*}}
+		[ -z "$ocr_lang" ] && ocr_lang="eng"
+		
+		# Run OCR
+		tesseract "$TMPFILE.tiff" "${FILE%%.*}" -l "$ocr_lang"
+		qdbus  $dbusRef value $compteur
+		qdbus  $dbusRef showCancelButton true
 	fi;
 done
 #rm -Rf $TMPDIR
