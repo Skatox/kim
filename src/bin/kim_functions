@@ -25,14 +25,12 @@ function error ()
 	fi
 }
 
-function file_exist ()
-{
-	if [ -e $1 ]; then 
-		text=`gettext "Destination file exist<br />Enter new name else file will be replaced"`
-		savefile=`kdialog --title "$title" --inputbox "$text" "$1" `
-		if [ $? -eq 1 ]; then 
-			qdbus $dbusRef close
-			exit 1
-		fi
-	fi
+function file_exist () {
+    local path="$1"
+    if [ -e "$path" ]; then
+        local text
+        text=$(gettext "Destination file exist<br />Enter new name else file will be replaced")
+        savefile=$(kdialog --title "$title" --inputbox "$text" "$path")
+        ...
+    fi
 }
