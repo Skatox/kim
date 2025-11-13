@@ -33,6 +33,9 @@ DIR="$1"
 test -n "$KDEHOME" || KDEHOME="`qtpaths --paths GenericDataLocation`"; export KDEHOME
 #KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$USER"/kim.XXXXXXXX` || exit 1
 KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$HOSTNAME"/kim.XXXXXXXX` || exit 1
+# No idea why this is KIMDIR not TMPDIR like the rest, but I'll go with it.
+KIMDIR=$(mktemp -d "${TMPDIR:-/tmp}"/kim.XXXXXXXX) || exit 1
+
 title="`gettext "Kim multiburst to GIF"`"
 let "nbfiles = $# -1"
 iterations=$nbfiles*16
@@ -68,7 +71,6 @@ convert -adjoin -delay 5 "$KIMDIR/imagette.*.jpg" "$DIR/animation.gif"
 
 # Remove subpictures (?!)
 qdbus $dbusRef setLabelText "`gettext "Removing temporary files"`"
-rm -rf "$KIMDIR"
-
+[ -z "$KIM_DEBUG_KEEP_TMP" ] && rm -rf "$KIMDIR"
 qdbus $dbusRef close
 
