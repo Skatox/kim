@@ -57,14 +57,14 @@ do
 		x=$((($j-1)*320));
 		y=$((($i-1)*240));
 		qdbus $dbusRef setLabelText "`gettext "Compressing file :"` `basename "$FILE"`"
-		convert -crop 320x240+$x+$y "$2" "$KIMDIR/imagette.$i.$j.jpg"
+		convert -crop 320x240+$x+$y -- "$2" "$KIMDIR/imagette.$i.$j.jpg"
  		qdbus $dbusRef value "$compteur"
 	done
 done
 
 # Convert in gif animation
 qdbus $dbusRef setLabelText "`gettext "Converting ..."`"
-convert -adjoin -delay 5 "$KIMDIR/imagette.*.jpg" "$DIR/animation.gif"
+convert -adjoin -delay 5 -- "$KIMDIR/imagette.*.jpg" "$DIR/animation.gif"
 
 # Remove subpictures (?!)
 qdbus $dbusRef setLabelText "`gettext "Removing temporary files"`"
