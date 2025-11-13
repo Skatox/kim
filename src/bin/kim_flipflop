@@ -47,7 +47,7 @@ for i in "$@";do
 		let "compteur +=1"
 		FILE="$i"
 		qdbus $dbusRef setLabelText "`gettext "Rotating file :"` `basename "$FILE"`"
-		mogrify -$ANGLE "$FILE"
+		mogrify "-$ANGLE" -- "$FILE"
  		qdbus $dbusRef value "$compteur"
 	fi;
 done
