@@ -17,7 +17,53 @@
 # along with Foobar; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-kdeinstdir=`qmake6 -query QT_INSTALL_PREFIX`
+# Check for required tools before installing
+missing=()
+
+need() {
+    local cmd="$1"
+    local label="${2:-$1}"
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        missing+=("$label")
+    fi
+}
+
+need qmake6 "qmake6 (Qt 6 base tools)"
+need kdialog
+need qdbus
+need convert "ImageMagick: convert"
+need mogrify "ImageMagick: mogrify"
+
+opt_missing=()
+
+opt() {
+    local cmd="$1"
+    local label="${2:-$1}"
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        opt_missing+=("$label")
+    fi
+}
+
+opt tesseract "tesseract (for OCR)"
+opt convmv   "convmv (for filename recoding)"
+
+if [ ${#missing[@]} -ne 0 ]; then
+    echo "Cannot install KIM6 because the following required commands are missing:"
+    for m in "${missing[@]}"; do
+        echo "  - $m"
+    done
+    echo "Please install them with your package manager and rerun install.sh."
+    exit 1
+fi
+
+if [ ${#opt_missing[@]} -ne 0 ]; then
+    echo "Note: some optional tools are missing; corresponding features will not work:"
+    for m in "${opt_missing[@]}"; do
+        echo "  - $m"
+    done
+    echo "You can install them later without reinstalling KIM."
+fi
+kdeinstdir=$(qmake6 -query QT_INSTALL_PREFIX)
 
 cp src/kim*.desktop $kdeinstdir/share/kio/servicemenus
 cp src/bin/kim* $kdeinstdir/bin/
