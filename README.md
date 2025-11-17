@@ -1,4 +1,4 @@
-# KIM (KDE Image Manipulator) for Plasma 6
+# KIM (KDE Image Menu) for Plasma 6
 
 This is a community-maintained fork of the original KIM (KDE Image Manipulator) script, updated to ensure compatibility and optimal performance under **KDE Plasma 6**.
 
