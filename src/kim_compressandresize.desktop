@@ -20,7 +20,7 @@
 [Desktop Entry]
 Type=Service
 MimeType=image/png;image/jpg;image/jpeg;image/tiff*
-Actions=Rcprs75;Rcprs80;Rcprs90;RcprsCustom;_SEPARATOR_;Rsize300;Rsize600;Rsize800;Rsize1024;Rsize1280;Rsize1400;Rsize1600;Rsize1920;RsizeCustom;_SEPARATOR_; WebThumb75120;WebExp75640;WebExp75800;WebExp751024;
+Actions=Rcprs75;Rcprs80;Rcprs90;RcprsCustom;_SEPARATOR_;Rsize300;Rsize600;Rsize800;Rsize1024;Rsize1280;Rsize1400;Rsize1600;Rsize1920;Rsize1920x1080;Rsize2560x1440;Rsize3440x1440;Rsize3840x2160;RsizeCustom;_SEPARATOR_;WebThumb75120;WebExp75640;WebExp75800;WebExp751024;WebExp751920;WebExp752560;WebExp753440;WebExp753840;
 X-KDE-Submenu=Kim - Compress and Resize
 X-KDE-Submenu[fr]=Kim - Compresser et redimensionner
 X-KDE-Submenu[de]=Kim: Bildabmessungen und Dateigröße ändern
@@ -123,6 +123,38 @@ Name[es]=Redimensionar (1920x1200 píxeles)
 Icon=transform-scale
 Exec=kim_resize 1920x1200 %D %U
 
+[Desktop Action Rsize1920x1080]
+Name=Resize (1920x1080 pixels)
+Name[fr]=Redimensionner (1920x1080 pixels)
+Name[de]=Bildabmessungen ändern: 1920x1080 Pixel
+Name[es]=Redimensionar (1920x1080 píxeles)
+Icon=transform-scale
+Exec=kim_resize 1920x1080 %D %U
+
+[Desktop Action Rsize2560x1440]
+Name=Resize (2560x1440 pixels)
+Name[fr]=Redimensionner (2560x1440 pixels)
+Name[de]=Bildabmessungen ändern: 2560x1440 Pixel
+Name[es]=Redimensionar (2560x1440 píxeles)
+Icon=transform-scale
+Exec=kim_resize 2560x1440 %D %U
+
+[Desktop Action Rsize3440x1440]
+Name=Resize (3440x1440 pixels)
+Name[fr]=Redimensionner (3440x1440 pixels)
+Name[de]=Bildabmessungen ändern: 3440x1440 Pixel
+Name[es]=Redimensionar (3440x1440 píxeles)
+Icon=transform-scale
+Exec=kim_resize 3440x1440 %D %U
+
+[Desktop Action Rsize3840x2160]
+Name=Resize (3840x2160 pixels)
+Name[fr]=Redimensionner (3840x2160 pixels)
+Name[de]=Bildabmessungen ändern: 3840x2160 Pixel
+Name[es]=Redimensionar (3840x2160 píxeles)
+Icon=transform-scale
+Exec=kim_resize 3840x2160 %D %U
+
 [Desktop Action RsizeCustom]
 Name=Resize Custom...
 Name[fr]=Redimensionnement personnalisé
@@ -161,3 +193,35 @@ Name[fr]=Pour le web : 1024x768 à 75 %
 Name[es]=Exportar para web: 1024x768 al 75 %
 Icon=text-html
 Exec=kim_webexport 1024x1024 %D %U
+
+[Desktop Action WebExp751920]
+Name=WebExport: 1920x1080 at 75 %
+Name[fr]=Pour le web : 1920x1080 à 75 %
+Name[de]=für Internetseiten: 1920x1080 bei 75%
+Name[es]=Exportar para web: 1920x1080 al 75 %
+Icon=text-html
+Exec=kim_webexport 1920x1920 %D %U
+
+[Desktop Action WebExp752560]
+Name=WebExport: 2560x1440 at 75 %
+Name[fr]=Pour le web : 2560x1440 à 75 %
+Name[de]=für Internetseiten: 2560x1440 bei 75%
+Name[es]=Exportar para web: 2560x1440 al 75 %
+Icon=text-html
+Exec=kim_webexport 2560x2560 %D %U
+
+[Desktop Action WebExp753440]
+Name=WebExport: 3440x1440 at 75 %
+Name[fr]=Pour le web : 3440x1440 à 75 %
+Name[de]=für Internetseiten: 3440x1440 bei 75%
+Name[es]=Exportar para web: 3440x1440 al 75 %
+Icon=text-html
+Exec=kim_webexport 3440x3440 %D %U
+
+[Desktop Action WebExp753840]
+Name=WebExport: 3840x2160 at 75 %
+Name[fr]=Pour le web : 3840x2160 à 75 %
+Name[de]=für Internetseiten: 3840x2160 bei 75%
+Name[es]=Exportar para web: 3840x2160 al 75 %
+Icon=text-html
+Exec=kim_webexport 3840x3840 %D %U
