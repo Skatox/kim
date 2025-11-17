@@ -1,3 +1,13 @@
+# 🗃️ Project Archived
+
+Notice — Project moved to a new repository!
+
+This repository is no longer actively maintained.
+Development continues at a new location:
+
+👉 [https://github.com/KIM-6/kim6](https://github.com/KIM-6/kim6)
+
+--------------------------------------------------------------------
 # KIM (KDE Image Menu) for Plasma 6
 
 This is a community-maintained fork of the original KIM (KDE Image Manipulator) script, updated to ensure compatibility and optimal performance under **KDE Plasma 6**.
