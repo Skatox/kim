@@ -54,9 +54,9 @@ for i in "$@";do
 		qdbus $dbusRef setLabelText "`gettext "Compressing file :"` `basename "$FILE"`"
 		case $ret in
 		    0)
-				mogrify -quality $QUALITY "$FILE";;
+				mogrify -quality $QUALITY -- "$FILE";;
 		    1)
-				convert -quality $QUALITY "$FILE" "$DIR/`gettext "compressed"`$ext_`basename "$FILE"`";;
+				convert -quality $QUALITY -- "$FILE" "$DIR/`gettext "compressed"`$ext_`basename "$FILE"`";;
 		    2)	
 				qdbus $dbusRef close
 				exit 1;;
